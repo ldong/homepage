@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>xkcd today</title>
+
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.6.3.js'></script>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  <style type='text/css'>
+  </style>
+
+
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+$.ajax({
+    url: "http://dynamic.xkcd.com/api-0/jsonp/comic?callback=?",
+    dataType: "json",
+    jsonpCallback: "xkcddata",
+    success: function(data) {
+        $("#xkcdcontent").append(
+            $("<h1/>").text(data.title),
+            $("<img/>").attr({
+                src: data.img,
+                title: data.alt,
+                alt: data.title
+            })
+        );
+    }
+});
+});//]]>
+
+</script>
+
+
+</head>
+<body>
+  <div id="xkcdcontent"></div>
+
+</body>
+
+
+<!-- From: http://jsfiddle.net/ldong/amgv9u1a/ -->
+</html>
